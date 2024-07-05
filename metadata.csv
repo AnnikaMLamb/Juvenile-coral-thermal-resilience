@@ -1,0 +1,83 @@
+sample_uid,sample_name,Species,Tank,Tile,Treatment,ControlSample
+134162,TT2419,A.tenuis,6,2419,elevated,Sample
+134167,TT2425,A.tenuis,2,2425,elevated,Sample
+134160,TT2470,A.tenuis,3,2470,ambient,Sample
+134169,TT2410_2,A.tenuis,4,2410,ambient,Sample
+134168,TT2446,A.tenuis,3,2446,ambient,Sample
+134174,TT2408,A.tenuis,1,2408,elevated,Sample
+134172,TT2450,A.tenuis,7,2450,ambient,Sample
+134163,TT2413,A.tenuis,7,2413,ambient,Sample
+134161,TT2410,A.tenuis,4,2410,ambient,Sample
+134159,TT2411,A.tenuis,2,2411,elevated,Sample
+134171,TT2429_1,A.tenuis,6,2429,elevated,Sample
+134164,TT2591,A.tenuis,8,2591,ambient,Sample
+134175,TT2482,A.tenuis,2,2482,elevated,Sample
+134128,TL2354,TL hybrid,2,2354,elevated,Sample
+134132,TL2228,TL hybrid,4,2228,ambient,Sample
+134173,TT2502,A.tenuis,8,2502,ambient,Sample
+134181,TT2526,A.tenuis,NA,2526,NA,Sample
+134129,TL2265,TL hybrid,2,2265,elevated,Sample
+134178,TT2571,A.tenuis,5,2571,elevated,Sample
+134182,TT2452,A.tenuis,1,2452,elevated,Sample
+134180,TT2542,A.tenuis,7,2542,ambient,Sample
+134165,TT2405,A.tenuis,5,2405,elevated,Sample
+134183,TT2586,A.tenuis,1,2586,elevated,Sample
+134134,TL2230,TL hybrid,7,2230,ambient,Sample
+134133,TL2204,TL hybrid,6,2204,elevated,Sample
+134179,TT2429_2,A.tenuis,6,2429,elevated,Sample
+134153,LL2083,A.loripes,4,2083,ambient,Sample
+134177,TT2599,A.tenuis,4,2599,ambient,Sample
+134184,LL2046,A.loripes,7,2046,ambient,Sample
+134146,LL2069,A.loripes,4,2069,ambient,Sample
+134149,LL2127,A.loripes,8,2127,ambient,Sample
+134147,LL2070,A.loripes,5,2070,elevated,Sample
+134145,LL2065,A.loripes,3,2065,ambient,Sample
+134148,LL2033,A.loripes,6,2033,elevated,Sample
+134157,LL2002,A.loripes,8,2002,ambient,Sample
+134155,LL2090,A.loripes,6,2090,elevated,Sample
+134152,LL2054,A.loripes,3,2054,ambient,Sample
+134141,LL2106,A.loripes,7,2106,ambient,Sample
+134151,LL2057,A.loripes,2,2057,elevated,Sample
+134150,LL2052,A.loripes,1,2052,elevated,Sample
+134139,LL2040,A.loripes,5,2040,elevated,Sample
+134154,LL2011,A.loripes,5,2011,elevated,Sample
+134144,LL2053,A.loripes,2,2053,elevated,Sample
+134156,LL2013,A.loripes,7,2013,ambient,Sample
+134142,LL2134,A.loripes,8,2134,ambient,Sample
+134143,LL2058,A.loripes,1,2058,elevated,Sample
+134136,LL2049,A.loripes,1,2049,elevated,Sample
+134158,LL2010,A.loripes,3,2010,ambient,Sample
+134137,LL2107,A.loripes,2,2107,elevated,Sample
+134140,LL2179,A.loripes,6,2179,elevated,Sample
+134138,LL2117,A.loripes,4,2117,ambient,Sample
+134185,Negative,NA,NA,NA,NA,Control
+134176,TT2543,A.tenuis,3,2543,ambient,Sample
+134170,TT2507,A.tenuis,5,2507,elevated,Sample
+134166,TT2521,A.tenuis,6,2521,elevated,Sample
+134135,TL2323,TL hybrid,3,2323,ambient,Sample
+134131,TL2232_2,TL hybrid,3,2232,ambient,Sample
+134130,TL2232_1,TL hybrid,3,2232,ambient,Sample
+134127,Tank8c,NA,Tank8,NA,,Control
+134126,Tank8b,NA,Tank8,NA,,Control
+134125,Tank8a,NA,Tank8,NA,,Control
+134124,Tank7c,NA,Tank7,NA,,Control
+134123,Tank7b,NA,Tank7,NA,,Control
+134122,Tank7a,NA,Tank7,NA,,Control
+134121,Tank6c,NA,Tank6,NA,,Control
+134120,Tank6b,NA,Tank6,NA,,Control
+134119,Tank6a,NA,Tank6,NA,,Control
+134118,Tank5c,NA,Tank5,NA,,Control
+134117,Tank5b,NA,Tank5,NA,,Control
+134116,Tank5a,NA,Tank5,NA,,Control
+134115,Tank4c,NA,Tank4,NA,,Control
+134114,Tank4b,NA,Tank4,NA,,Control
+134113,Tank4a,NA,Tank4,NA,,Control
+134112,Tank3c,NA,Tank3,NA,,Control
+134111,Tank3b,NA,Tank3,NA,,Control
+134110,Tank3a,NA,Tank3,NA,,Control
+134109,Tank2c,NA,Tank2,NA,,Control
+134108,Tank2b,NA,Tank2,NA,,Control
+134107,Tank2a,NA,Tank2,NA,,Control
+134106,Tank1c,NA,Tank1,NA,,Control
+134105,Tank1b,NA,Tank1,NA,,Control
+134104,Tank1a,NA,Tank1,NA,,Control
