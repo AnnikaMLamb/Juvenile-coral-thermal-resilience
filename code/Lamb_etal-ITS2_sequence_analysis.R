@@ -251,9 +251,9 @@ p_tree$data <- left_join(p_tree$data, meta, by = c("label" = "sample_name")) %>%
   mutate(Species = paste0(Species)) # can customise any metadata that is needed here
 
 # Colour the tree tips by the species information
-labels=c(expression(italic("A. loripes")), expression(italic("A. tenuis")), "TL hybrid")
+labels=c(expression(italic("A. loripes")), expression(italic("A. kenti")), "TL hybrid")
 p_tree_tip <- p_tree + 
-  geom_tippoint(aes(color = Species), size = 2.3) + scale_color_manual(values=c("red","blue", "green"),labels = labels) +labs(color = "Offspring group")
+  geom_tippoint(aes(color = Species), size = 2.3) + scale_color_manual(values=c("#e34a33","#756bb1","#31a354"),labels = labels) +labs(color = "Offspring group")
 p_tree_tip
 
 
