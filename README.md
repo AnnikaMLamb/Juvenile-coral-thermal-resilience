@@ -2,7 +2,8 @@
 >This repository contains the code and data required to reproduce analyses conducted by Annika Lamb (AIMS) for the manuscript "Purebred and hybrid coral juveniles demonstrate thermal resilience".
 >
 >Data is avaiable in .csv, .fasta, and .txt formats and code is written in R.
-
+>
+>Note that Acropora kenti is referred to as 'Acropora tenuis' in the data which was collected prior to the taxonomic revision in Bridge et al. 2023.
 # Data
 >Repository contains four phenotypic datasets, one ITS2 metabarcoding dataset, and one temperature profile dataset
 
