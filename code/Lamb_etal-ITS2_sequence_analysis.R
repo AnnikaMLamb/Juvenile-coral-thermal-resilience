@@ -111,11 +111,9 @@ totalreads
 n <- length(levels(seqs_long$name))
 seqs_pal = rainbow(n, s=.6, v=.9)[sample(1:n,n, replace = FALSE)]
 names(seqs_pal) <- levels(seqs_long$name)
-```
 
 # Read in and format the profile tables
 
-```{r}
 # Read in the profile data
 profiles_raw <- read_tsv("20210715_lamb/its2_type_profiles/HeatWaveITS2.profiles.absolute.abund_and_meta.txt", skip = 6)%>%
   select(sample_name = `...2`, `C1-C1b-C1c-C42.2-C1bh-C1br-C1cb-C72k`:`D1-D1u-D2-D4-D2.2`) %>% # rename the second column as "sample_name" and select the profile columns
@@ -162,11 +160,9 @@ profile_data
 n <- length(levels(profile_data$name))
 profile_pal = rainbow(n, s=.6, v=.6)[sample(1:n,n, replace = FALSE)]
 names(profile_pal) <- levels(profile_data$name)
-```
 
 # Read in the sequences and create the unifrac distances
 
-```{r}
 # Import and filter sequence data
 fasta <- read_fasta_df("20210715_lamb/post_med_seqs/HeatWaveITS2.seqs.fasta") %>%
   filter(label %in% seqs_long$name) %>% # keep only the sequences present in the sequence table above
@@ -202,11 +198,9 @@ du <- unifracs[, , "d_1"]		# Weighted UniFrac
 
 # Hierarchical clustering of the samples into groups based on their pairwise unifrac distances
 hclust_samps <- upgma(du)
-```
 
 # Plot
 
-```{r}
 # Join profiles and sequence data together into single dataframe
 all_data <- rbind(seqs_long, profile_data)
 
@@ -227,15 +221,17 @@ all_pal['non-profile sequences'] <- "#808080"
 theme_set(theme_bw()) # set the theme
 
 p_bar_uni <- ggplot(plot_df, aes(value_rel, sample_name)) +
-  geom_bar(stat = "identity", aes(fill = name, colour = name)) +
+  geom_bar(stat = "identity", aes(fill = name, color = name), position='fill',width = 1) +
   theme(aspect.ratio = 1, legend.position = "bottom", axis.text.y=element_blank(), axis.ticks.y = element_blank(),
+        text = element_text(size=18),
         axis.text.x=element_blank(), axis.ticks.x = element_blank(),
         axis.title.x = element_blank(), axis.title.y = element_blank(),
         panel.border = element_blank(), panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(), axis.ticks = element_blank()) +
+        panel.grid.minor = element_blank(), axis.ticks = element_blank(),
+        legend.text = element_text(size = 18))+
   scale_fill_manual(guide="none", values = all_pal, breaks = levels(profile_data$name)) +
   scale_colour_manual(guide="none", values = all_pal, breaks = levels(profile_data$name)) +
-  geom_vline(xintercept = 1, size = 2) +
+  geom_vline(xintercept = 0.5, size = 2) +
   guides(fill=guide_legend(ncol = 1, title = "Profile"))
   
 p_bar_uni
@@ -251,9 +247,9 @@ p_tree$data <- left_join(p_tree$data, meta, by = c("label" = "sample_name")) %>%
   mutate(Species = paste0(Species)) # can customise any metadata that is needed here
 
 # Colour the tree tips by the species information
-labels=c(expression(italic("A. loripes")), expression(italic("A. kenti")), "TL hybrid")
+labels=c(expression(italic("A. loripes")), expression(italic("A. kenti")), "KL hybrid")
 p_tree_tip <- p_tree + 
-  geom_tippoint(aes(color = Species), size = 2.3) + scale_color_manual(values=c("#e34a33","#756bb1","#31a354"),labels = labels) +labs(color = "Offspring group")
+  geom_tippoint(aes(color = Species), size = 5) + scale_color_manual(values=c("#d95f02","#7570b3","#1b9e77"),labels = labels) +labs(color = "Offspring group")+theme(text = element_text(size=18),legend.text = element_text(size = 18))
 p_tree_tip
 
 
@@ -268,10 +264,10 @@ aligned_plots <- plot_grid(
   axis = "lr",
   rel_heights = c(1,1),
   greedy = TRUE,
-  labels = c('A','B','C')
+  labels = c('A','B'),
+  label_size = 20
 ) 
 
-print(aligned_plots)
 
 # Display the combined plot
 print(aligned_plots)
