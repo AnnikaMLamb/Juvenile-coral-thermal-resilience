@@ -11,8 +11,6 @@ library(glmmTMB)
 library(sjmisc)
 library(ggrepel)
 library(lsmeans)
-library(jtools)
-library(interactions)
 
 
 #Summary function
@@ -72,8 +70,9 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE, conf.i
   return(datac)
 }
 #General graphics
-cols<- c("#fdbb84","#addd8e","#bcbddc")
+cols<- c("#fc8d62","#66c2a5","#8da0cb")
 TP_names <- as_labeller(c('Ambient' = "Ambient", 'Elevated'="Elevated",`30` = "T30", `65` = "T65"))
+axes_marks_settings <- element_text(color = "black", size =10)
 
 ###SURVIVORSHIP###
 #Load data 
@@ -98,15 +97,15 @@ survival_graph=ggplot(summarySurvival_Tile, aes(y=Survival, x=Cross, fill=Cross)
   scale_fill_manual(values=cols, labels = c(expression(italic("A. loripes")), "KL hybrid",expression(italic("A. kenti"))))+
   theme_classic()+ theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
   theme(text = element_text(size=15))+
-  theme(axis.text.x = element_text(size = 0), axis.title.x = element_text(size = 16),
-        axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),
+  theme(axis.text.x = element_text(size = 0), axis.title.x = element_text(size = 18),
+        axis.text.y = element_text(size = 16), axis.title.y = element_text(size = 18),
         axis.ticks = element_blank(),
-        strip.text = element_text(size = 14),
-        legend.text = element_text(size = 14), legend.title = element_text(size = 14),)+
+        strip.text = element_text(size = 16),
+        legend.text = element_text(size = 16), legend.title = element_text(size = 16),)+
   theme(legend.key = element_rect(fill="white",colour = NA))+
   theme(axis.text = element_text(colour = "black")) + theme(panel.background = element_rect(colour = "black", size=1)) + 
   labs(x="", y="Proportion surviving", fill = "Offspring Group")+
-  geom_text(data=SummarySurvival_Tile_Crunched, size = 5,(aes(x=factor(Cross), y= min(Survival)*0.8, label=paste("n =",N))))
+  geom_text(data=SummarySurvival_Tile_Crunched, size = 6,(aes(x=factor(Cross), y= min(Survival)*0.8, label=paste("n =",N))))
 survival_graph
 
 
@@ -167,30 +166,27 @@ summaryGrowth
 ##Graph growth
 yl <- expression(Area ~ mm^2)
 #Graph by day
-cols_all<-c("#fdbb84","#fdbb84","#addd8e","#addd8e","#a6bddb","#a6bddb","#fdbb84","#fdbb84","#addd8e","#addd8e","#a6bddb","#a6bddb","#fdbb84","#fdbb84","#addd8e","#addd8e","#a6bddb","#a6bddb")
 axes_marks_settings <- element_text(color = "black", size =10)
-summaryGrowth$Cross
 GrowthGraph=ggplot(summaryGrowth, aes(y=Size, x=Day, color=Cross, fill = Cross))+
   facet_grid(Treatment~.)+
   geom_ribbon(aes(ymin=Size-se, ymax=Size+se), position=position_dodge(0),alpha=0.8)+
   scale_fill_manual(values = cols, ,labels = c(expression(italic("A. loripes")), "KL hybrid",expression(italic("A. kenti")))) +
-  scale_color_manual(values = c("#e34a33","#31a354","#756bb1")) +
+  scale_color_manual(values = c("#d95f02","#1b9e77","#7570b3")) +
   geom_point(size=2, fill = "black")+
   theme_classic()+ theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
   theme(text = element_text(size=15))+
-  theme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),
-        axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),
-        strip.text = element_text(size = 14),
-        legend.text = element_text(size = 14), legend.title = element_text(size = 14),)+
+  theme(axis.text.x = element_text(size = 16), axis.title.x = element_text(size = 18),
+        axis.text.y = element_text(size = 16), axis.title.y = element_text(size = 18),
+        strip.text = element_text(size = 16),
+        legend.text = element_text(size = 16), legend.title = element_text(size = 16),)+
   theme(legend.key = element_rect(fill="white",colour = NA))+
   theme(axis.text = element_text(colour = "black")) + theme(panel.background = element_rect(colour = "black", size=1)) + 
   labs(x="Time point (days)", y=yl, color = "Offspring Group") +
   theme(axis.text = axes_marks_settings)+
   guides(fill = guide_legend("Offspring Group"), color = 'none') 
-
 GrowthGraph
 GrowthGraph + 
-  geom_label_repel(label=summaryGrowth$N, fill = NA, size = 5, direction=c("both"), box.padding = 0.1, label.padding = 0.25, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
+  geom_label_repel(label=summaryGrowth$N, fill = NA, size = 6, direction=c("both"), box.padding = 0.1, label.padding = 0.25, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
 
 #Treat time point as a factor
 Growth$TimePoint<- as.factor(Growth$TimePoint)
@@ -272,21 +268,21 @@ ColourGraph<-ggplot(summaryColour, aes(y=Colour, x=Day, color=Cross, fill = Cros
   facet_grid(Treatment~.)+
   geom_ribbon(aes(ymin=Colour-se, ymax=Colour+se), position=position_dodge(0),alpha=0.8)+
   scale_fill_manual(values = cols, labels = c(expression(italic("A. loripes")), "KL hybrid",expression(italic("A. kenti")))) +
-  scale_color_manual(values = c("#e34a33","#31a354","#756bb1")) +
+  scale_color_manual(values = c("#d95f02","#1b9e77","#7570b3")) +
   geom_point(size=2, fill = "black")+
   theme_classic()+ theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
-  theme(text = element_text(size=15))+
-  theme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),
-        axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),
-        strip.text = element_text(size = 14),
-        legend.text = element_text(size = 14), legend.title = element_text(size = 14),)+
+  theme(text = element_text(size=16))+
+  theme(axis.text.x = element_text(size = 16), axis.title.x = element_text(size = 18),
+        axis.text.y = element_text(size = 16), axis.title.y = element_text(size = 18),
+        strip.text = element_text(size = 16),
+        legend.text = element_text(size = 16), legend.title = element_text(size = 16),)+
   theme(legend.key = element_rect(fill="white",colour = NA))+
   theme(axis.text = element_text(colour = "black")) + theme(panel.background = element_rect(colour = "black", size=1)) + 
   labs(x="Time point (days)", y="Colour score", color = "Offspring Group") +
   theme(axis.text = axes_marks_settings)+
   guides(fill = guide_legend("Offspring Group"), color = 'none') 
 ColourGraph
-ColourGraph + geom_label_repel(label=summaryColour$N, fill = NA, size = 5, direction=c("both"), box.padding = 0.1, label.padding = 0.5, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
+ColourGraph + geom_label_repel(label=summaryColour$N, fill = NA, size = 6, direction=c("both"), box.padding = 0.1, label.padding = 0.5, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
 
 
 ##lme
@@ -354,21 +350,21 @@ IPAMGraph<-ggplot(summaryIPAM, aes(y=Y, x=TimePoint, color=Cross, fill = Cross))
   facet_grid(Treatment~.)+
   geom_ribbon(aes(ymin=Y-se, ymax=Y+se), position=position_dodge(0),alpha=0.8)+
   scale_fill_manual(values = cols, labels = c(expression(italic("A. loripes")), "KL hybrid",expression(italic("A. kenti")))) +
-  scale_color_manual(values = c("#e34a33","#31a354","#756bb1")) +
+  scale_color_manual(values = c("#d95f02","#1b9e77","#7570b3")) +
   geom_point(size=2, fill = "black")+
   theme_classic()+ theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()) + 
-  theme(text = element_text(size=15))+
-  theme(axis.text.x = element_text(size = 14), axis.title.x = element_text(size = 16),
-        axis.text.y = element_text(size = 14), axis.title.y = element_text(size = 16),
-        strip.text = element_text(size = 14),
-        legend.text = element_text(size = 14), legend.title = element_text(size = 14),)+
+  theme(text = element_text(size=16))+
+  theme(axis.text.x = element_text(size = 16), axis.title.x = element_text(size = 18),
+        axis.text.y = element_text(size = 16), axis.title.y = element_text(size = 18),
+        strip.text = element_text(size = 16),
+        legend.text = element_text(size = 16), legend.title = element_text(size = 16),)+
   theme(legend.key = element_rect(fill="white",colour = NA))+
   theme(axis.text = element_text(colour = "black")) + theme(panel.background = element_rect(colour = "black", size=1)) + 
   labs(x="Time point (days)", y="Fv/Fm", color = "Offspring Group") +
   theme(axis.text = axes_marks_settings)+
   guides(fill = guide_legend("Offspring Group"), color = 'none') 
 IPAMGraph
-IPAMGraph + geom_label_repel(label=summaryIPAM$N, fill = NA, size = 5, direction=c("both"), box.padding = 0.1, label.padding = 0.25, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
+IPAMGraph + geom_label_repel(label=summaryIPAM$N, fill = NA, size = 6, direction=c("both"), box.padding = 0.1, label.padding = 0.25, point.padding = 3, label.size = NA, arrow = NULL,show.legend = FALSE, fontface="bold" )
 
 
 ##lme
